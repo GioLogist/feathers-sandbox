@@ -50,10 +50,12 @@
     "cors": "^2.8.5",
     "feathers-mongodb": "^6.1.0",
     "feathers-sequelize": "^6.2.0",
+    "feathers-solr": "^2.7.10",
     "helmet": "^3.23.3",
     "mongodb": "^3.5.9",
     "mongodb-core": "^3.2.7",
     "mysql2": "^2.1.0",
+    "node-fetch": "^2.6.0",
     "sequelize": "^6.3.0",
     "serve-favicon": "^2.5.0",
     "winston": "^3.0.0"
