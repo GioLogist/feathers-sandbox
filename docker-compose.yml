@@ -1,0 +1,12 @@
+  db:
+    image: mysql
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    ports:
+      - '13306:3306'
+    volumes:
+      - .local/mysql-data:/var/lib/mysql
+      - .local/mysql-dump:/docker-entrypoint-initdb.d
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+      MYSQL_DATABASE: fmbm_feathers_sandbox
