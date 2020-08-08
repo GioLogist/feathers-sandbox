@@ -22,3 +22,12 @@
       MONGO_INITDB_DATABASE: fmbm_feathers_sandbox
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: example
+
+  solr:
+    image: solr:8
+    ports:
+      - '18983:8983'
+    volumes:
+      - .local/solr-data/:/var/solr/data/
+      - .local/solr-init.sh:/docker-entrypoint-initdb.d/solr-init.sh:ro
+      - .local/solr-init/books:/tmp/solr-init/books

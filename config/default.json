@@ -29,5 +29,6 @@
     }
   },
   "mysql": "mysql://root:@localhost:13306/fmbm_feathers_sandbox",
-  "mongodb": "mongodb://another:user@localhost:17017/fmbm_feathers_sandbox"
+  "mongodb": "mongodb://another:user@localhost:17017/fmbm_feathers_sandbox",
+  "solr": "http://localhost:18983/solr/books"
 }
