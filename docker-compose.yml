@@ -33,3 +33,30 @@ services:
       - .local/solr-data/:/var/solr/data/
       - .local/solr-init.sh:/docker-entrypoint-initdb.d/solr-init.sh:ro
       - .local/solr-init/books:/tmp/solr-init/books
+
+  node:
+    image: 'node:14'
+    restart: always
+    ports:
+      - '13030:3030'
+    depends_on:
+      - mysql
+      - mongo
+      - solr
+    working_dir: /home/node/app
+    environment:
+      - PORT=3030
+    volumes:
+      - .:/home/node/app
+      - /home/node/app/node_modules
+    command: [
+      "./wait-for-it.sh", 
+      "mysql:3306", 
+      "mongo:27017", 
+      "solr:8983", 
+      "-s",
+      "-t",
+      "0", 
+      "--",
+      "./start.sh"
+    ]
