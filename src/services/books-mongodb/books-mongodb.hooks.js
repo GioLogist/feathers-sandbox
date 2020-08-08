@@ -13,17 +13,7 @@ module.exports = {
 
   after: {
     all: [],
-    find: [(context) => {
-      const { result: { data } } = context
-      if(data.length)
-        context.result.data = data.map(d =>{ 
-          const { id, ...erthing} = d
-          console.log('erthing, ', erthing)
-          return erthing
-        })
-
-      return context
-    }],
+    find: [],
     get: [],
     create: [],
     update: [],

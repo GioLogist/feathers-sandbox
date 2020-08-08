@@ -20,6 +20,8 @@ const authentication = require('./authentication');
 
 const sequelize = require('./sequelize');
 
+const mongodb = require('./mongodb');
+
 const app = express(feathers());
 
 // Load app configuration
@@ -39,6 +41,8 @@ app.configure(express.rest());
 app.configure(socketio());
 
 app.configure(sequelize);
+
+app.configure(mongodb);
 
 // Configure other middleware (see `middleware/index.js`)
 app.configure(middleware);
