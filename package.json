@@ -20,13 +20,13 @@
     "config": "config/"
   },
   "engines": {
-    "node": "^10.0.0",
+    "node": "^14.0.0",
     "yarn": ">= 0.18.0"
   },
   "scripts": {
     "test": "yarn run lint && yarn run mocha",
     "lint": "eslint src/. test/. --config .eslintrc.json --fix",
-    "dev": "nodemon src/",
+    "dev": "nodemon --inspect src/",
     "start": "node src/",
     "mocha": "mocha test/ --recursive --exit"
   },
