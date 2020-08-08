@@ -28,5 +28,6 @@
       "passwordField": "password"
     }
   },
-  "mysql": "mysql://root:@localhost:13306/fmbm_feathers_sandbox"
+  "mysql": "mysql://root:@localhost:13306/fmbm_feathers_sandbox",
+  "mongodb": "mongodb://another:user@localhost:17017/fmbm_feathers_sandbox"
 }

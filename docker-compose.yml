@@ -10,3 +10,15 @@
     environment:
       MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
       MYSQL_DATABASE: fmbm_feathers_sandbox
+
+  mongo:
+    image: mongo
+    restart: always
+    ports:
+      - 17017:27017
+    volumes:
+      - .local/mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
+    environment:
+      MONGO_INITDB_DATABASE: fmbm_feathers_sandbox
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
