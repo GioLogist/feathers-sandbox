@@ -1,45 +1,44 @@
-# feathers-sandbox
+# FeathersJS Sandbox
 
-> 
+A [FeathersJS](https://feathersjs.com/) sandbox environment. This is used to test some of our in-house packages, such as those seen in [@fmbm/feathers](https://github.com/fmbm/feathers). 
 
-## About
+This sandbox uses different [database adapters](https://docs.feathersjs.com/api/databases/adapters.html). This  ensures that things we build for FeathersJS are as database agnostic as possible. 
 
-This project uses [Feathers](http://feathersjs.com). An open source web framework for building modern real-time applications.
+Additionally, the sandbox is containerized. Allowing anyone to spin this up, without having to install things like mysql/postgress/mongodb/etc. It'll also play nicely with things like [GitHub Codespaces](https://github.com/features/codespaces/).
 
-## Getting Started
+## Current Database Adapters
 
-Getting up and running is as easy as 1, 2, 3.
+Below is a list of the current database adapters we've setup and containerized. 
 
-1. Make sure you have [NodeJS](https://nodejs.org/) and [npm](https://www.npmjs.com/) installed.
-2. Install your dependencies
+| Database | Adapter | Service
+| - | - | -
+| MySQL | [feathers-sequelize](https://github.com/feathersjs-ecosystem/feathers-sequelize) | [books-mysql](src/services/books-mysql) |
+| MongoDB | [feathers-mongodb](https://github.com/feathersjs-ecosystem/feathers-mongodb) | [books-mongodb](src/services/books-mongodb)
+| Solr | [feathers-solr](https://github.com/sajov/feathers-solr) | [books-solr](src/services/books-solr#1) |
 
-    ```
-    cd path/to/feathers-sandbox
-    npm install
-    ```
 
-3. Start your app
+## Containerization
 
-    ```
-    npm start
-    ```
+Containerization is done primarily through [Docker](https://www.docker.com/), using [Docker Compose](https://docs.docker.com/compose/). There are currently 4 containers. One for each database and one for FeathersJS itself. 
 
-## Testing
+For more information, check the [docker-compose.yml](docker-compose.yml) file.
 
-Simply run `npm test` and all your tests in the `test/` directory will be run.
+# Running locally
 
-## Scaffolding
+Depending on your workflow, you may want to use Docker directly, or debug using VSCode. 
 
-Feathers has a powerful command line interface. Here are a few things it can do:
+## With Docker
 
-```
-$ npm install -g @feathersjs/cli          # Install Feathers CLI
-
-$ feathers generate service               # Generate a new Service
-$ feathers generate hook                  # Generate a new Hook
-$ feathers help                           # Show all commands
+```bash
+docker-compose up -d
 ```
 
-## Help
+## With VSCode
 
-For more information on all the things you can do with Feathers visit [docs.feathersjs.com](http://docs.feathersjs.com).
+First, install the [Remote Containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers) extension. Now, when opening this repo in VSCode, you'll be prompted to "Re-Open in Container". 
+
+![Screen Shot 2020-08-08 at 5 36 29 PM](https://user-images.githubusercontent.com/4120754/89722369-b2bc5000-d99d-11ea-8339-9a21a4147fd9.png)
+
+This will have several advantages, including full IntelliSense (completions), code navigation, and debugging ([read more](https://code.visualstudio.com/docs/remote/containers)). 
+
+> Pro Tip: When debugging with VSCode (after completing setup above), you can easily run "Debug: Attach to Node Process" to attach VSCode's built in debugger to the container. This will allow you to add breakpoints and much more, since we've included `--inspect` in our `yarn dev` command in [package.json](package.json).
